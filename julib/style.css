@@ -1,0 +1,18 @@
+#testresults{ background-color: #ffffde; }
+.jutest{ border: 1px solid black; }
+.testname{ width: 45%; float: right; font-weight: bold; padding: 3px; }
+.resulttext{ width: 45%; padding: 3px; }
+
+.unknown{ background-color: silver; }
+.passed{ background-color: green; }
+.failed{ background-color: red; }
+
+#neurostdout{
+	width: 100%;
+	height: 300px;
+	overflow: scroll;
+	background: black;
+	color: green;
+	font-family: Monaco, serif;
+	font-size: 8pt;
+}
