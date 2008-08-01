@@ -142,7 +142,12 @@ __JUAssert.prototype.equals = function __juassert_equal(a, b)
 		return false;
 	}
 	
-	if(typeof a.length == "number" && typeof b.length == "number")
+	if(typeof a == "string" && typeof b == "string") 
+	{
+		if(a == b)
+			return true;
+	}
+	else if(typeof a.length == "number" && typeof b.length == "number")
 	{
 		if(a.length != b.length)
 			return false;
