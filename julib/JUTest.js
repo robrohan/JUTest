@@ -150,7 +150,7 @@ __JUAssert.prototype.equals = function __juassert_equal(a, b)
 		var matched = true;
 		for(var z=0; z<a.length; z++)
 		{
-			if(a[z] != b[z])
+			if( !this.equals(a[z], b[z]) )
 			{
 				matched = false;
 				break;
