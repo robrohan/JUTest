@@ -163,8 +163,6 @@ __JUAssert.prototype.equals = function __juassert_equal(a, b)
 	{
 		try {
 			for(var i in a) {
-				log.debug("--> " + i);
-				log.debug(a[i] + " ========= " +  b[i]);
 				if( !this.equals(a[i], b[i]) )
 					return false;
 			}
