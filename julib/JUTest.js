@@ -117,11 +117,15 @@ function __JUAssert(){;}
 /**
  * Method: JUAssert.equals
  * Compares two items for equality. If the two items are arrays their elements
- * are checked for equality.
+ * are checked for equality. If the two items are objects each element is recursed
+ * and checked for equality.  
+ *
+ * Warning: If value _types_ are different they will fail equality. For example
+ * equals("3",3) will fail.
  *
  * Parameters:
  *	a - first item
- *	b -second item
+ *	b - second item
  *
  * Returns:
  * 	true if they are equal false otherwise
@@ -129,6 +133,11 @@ function __JUAssert(){;}
 __JUAssert.prototype.equals = function __juassert_equal(a, b)
 {
 	if( (a == null && b != null) || (a != null && b == null) )
+	{
+		return false;
+	}
+	
+	if( typeof a != typeof b )
 	{
 		return false;
 	}
@@ -149,6 +158,21 @@ __JUAssert.prototype.equals = function __juassert_equal(a, b)
 		}
 		
 		return matched;
+	}
+	else if (typeof a == "object" && typeof b == "object")
+	{
+		try {
+			for(var i in a) {
+				log.debug("--> " + i);
+				log.debug(a[i] + " ========= " +  b[i]);
+				if( !this.equals(a[i], b[i]) )
+					return false;
+			}
+		} catch(e) {
+			return false;
+		}
+		
+		return true;
 	}
 	else
 	{
