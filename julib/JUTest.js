@@ -196,10 +196,7 @@ __JUAssert.prototype.equals = function __juassert_equal(a, b)
  */ 
 __JUAssert.prototype.notEquals = function __juassert_notequal(a, b)
 {
-	if(a != b)
-		return true;
-		
-	return false;
+	return !this.equals(a, b);
 }
 
 /**
